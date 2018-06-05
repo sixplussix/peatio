@@ -4,6 +4,7 @@ class PeatioTool
       email: email,
       iss: ENV['JWT_ISSUER'].to_s.squish.presence,
       iat: Time.now.to_i,
+      jti: SecureRandom.hex(20),
       sub: 'session',
       aud: ENV['JWT_AUDIENCE'].to_s.split(',').map(&:squish).reject(&:blank?).presence,
     }
